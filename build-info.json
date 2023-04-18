@@ -1,0 +1,11 @@
+{
+    "postinstall_action": "none",
+    "suppress_bundle_relocation": true,
+    "name": "relay-smart-agent-${version}.pkg",
+    "distribution_style": false,
+    "preserve_xattr": false,
+    "install_location": "/",
+    "version": "2.2.0",
+    "ownership": "recommended",
+    "identifier": "com.lightspeedsystems.relay-smart-agent"
+}

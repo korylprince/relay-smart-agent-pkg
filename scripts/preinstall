@@ -1,0 +1,15 @@
+#!/bin/bash
+
+launchctl unload /Library/LaunchDaemons/com.lightspeedsystems.smartagentjs.plist
+
+rm -rf /usr/local/etc/config.json
+rm -rf /usr/local/bin/SmartAgentJS
+rm -rf /Applications/.lightspeed-agent/SmartAgentJS
+rm -rf /Library/LaunchDaemons/com.lightspeedsystems.smartagentjs.plist
+
+LABEL="com.lightspeedsystems.lightspeed-agent"
+loggedInUID=$(stat -f%u /dev/console)
+
+if /bin/launchctl print gui/$loggedInUID/$LABEL &> /dev/null; then
+    sudo -u \#$loggedInUID /bin/launchctl bootout gui/$loggedInUID/"${LABEL}"
+fi

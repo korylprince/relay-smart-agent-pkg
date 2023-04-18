@@ -1,0 +1,11 @@
+#!/bin/bash
+
+LAUNCH_AGENTS="/Library/LaunchAgents/"
+LABEL="com.lightspeedsystems.lightspeed-agent"
+PLIST="${LABEL}.plist"
+
+loggedInUID=$(stat -f%u /dev/console)
+
+/bin/launchctl bootstrap gui/$loggedInUID  "${LAUNCH_AGENTS}${PLIST}"
+
+/usr/local/bin/mobilefilter -d
